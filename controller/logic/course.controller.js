@@ -5,7 +5,7 @@ const config = require("config");
 exports.createCourse = (req, res, next) => {
     let course = {
         code: req.body.code,
-        name: req.body.name,
+        name: req.body.name
     };
     courseDto.create(course, (err, data) => {
         if (err) {
@@ -27,7 +27,7 @@ exports.updateCourse = (req, res, next) => {
 
     let course = {
         code: req.body.code,
-        name: req.body.name,
+        name: req.body.name
 
     };
     courseDto.update({ _id: req.body.id }, course, (err, data) => {

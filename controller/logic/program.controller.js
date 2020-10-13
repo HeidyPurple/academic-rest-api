@@ -1,14 +1,15 @@
 /** Dto */
-const periodDto = require("../../model/dto/period.dto");
+const programDto = require("../../model/dto/program.dto");
 const config = require("config");
 
-exports.createPeriod = (req, res, next) => {
-    let period = {
-        year: req.body.year,
-        number: req.body.number,
-        current: req.body.current
+exports.createProgram = (req, res, next) => {
+    let program = {
+        code: req.body.code,
+        name: req.body.name,
+        directorName: req.body.directorName,
+        idFaculty: req.body.idFaculty
     };
-    periodDto.create(period, (err, data) => {
+    programDto.create(program, (err, data) => {
         if (err) {
             return res.status(400).json(
                 {
@@ -24,15 +25,16 @@ exports.createPeriod = (req, res, next) => {
     });
 }
 
-exports.updatePeriod = (req, res, next) => {
+exports.updateProgram = (req, res, next) => {
 
-    let period = {
-        year: req.body.year,
-        number: req.body.number,
-        current: req.body.current
+    let program = {
+        code: req.body.code,
+        name: req.body.name,
+        directorName: req.body.directorName,
+        idFaculty: req.body.idFaculty
 
     };
-    periodDto.update({ _id: req.body.id }, period, (err, data) => {
+    programDto.update({ _id: req.body.id }, program, (err, data) => {
         if (err) {
             return res.status(400).json(
                 {
@@ -49,9 +51,27 @@ exports.updatePeriod = (req, res, next) => {
     });
 };
 
+exports.getByCode = (req, res, next) => {
+
+    programDto.getByCode({ code: req.params.code }, (err, data) => {
+        if (err) {
+            return res.status(400).json(
+                {
+                    error: err
+                }
+            );
+        }
+        res.status(200).json(
+            {
+                info: data
+            }
+        );
+    });
+};
+
 exports.getAll = (req, res, next) => {
 
-            periodDto.getAll({}, (err, data) => {
+            programDto.getAll({}, (err, data) => {
                 if (err) {
                     return res.status(400).json(
                         {
@@ -68,8 +88,8 @@ exports.getAll = (req, res, next) => {
         };
 
  
-    exports.deletePeriod = () => {
-        periodDto.delete({ _id: req.body.id }, (err, data) => {
+    exports.deleteProgram = () => {
+        programDto.delete({ _id: req.body.id }, (err, data) => {
             if (err) {
                 return res.status(400).json(
                     {

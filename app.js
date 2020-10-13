@@ -37,6 +37,14 @@ studentRoutes(app);
 const teacherRoutes = require("./routes/teacher.routes");
 teacherRoutes(app);
 
+// Faculty Routes Loading
+const facultyRoutes = require("./routes/faculty.routes");
+facultyRoutes(app);
+
+// Program Routes Loading
+const programRoutes = require("./routes/program.routes");
+programRoutes(app);
+
 // Course Routes Loading
 const courseRoutes = require("./routes/course.routes");
 courseRoutes(app);

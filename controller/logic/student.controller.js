@@ -13,7 +13,7 @@ exports.createStudent = (req, res, next) => {
         lastname: req.body.lastname,
         email: req.body.email,
         phone: req.body.phone,
-        career: req.body.career
+        idProgram: req.body.idProgram
     };
     studentDto.create(std, (err, data) => {
         if (err) {
@@ -62,7 +62,7 @@ exports.updateStudent = (req, res, next) => {
         lastname: req.body.lastname,
         email: req.body.email,
         phone: req.body.phone,
-        career: req.body.career
+        idProgram: req.body.idProgram
     };
     studentDto.update({ _id: req.body.id }, std, (err, data) => {
         if (err) {

@@ -25,7 +25,7 @@ const studentSchema = new mongoose.Schema({
         type:"String",
         required: true
     },
-    career: {
+    idProgram: {
         type:"String",
         required: true
     },
